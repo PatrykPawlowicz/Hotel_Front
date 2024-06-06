@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie - KWP Hotel</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .login-form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); /* wysokość ekranu minus wysokość navbaru */
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .form-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h1>KWP Hotel</h1>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="main.html">Strona główna</a></li>
+                <li><a href="#">Pokoje</a></li>
+                <li><a href="#">Rezerwacja</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="auth-buttons" id="auth-buttons">
+            <div class="signup">
+                <a href="signup.html">Rejestracja</a>
+            </div>
+            <div class="login">
+                <a href="login.html">Logowanie</a>
+            </div>
+        </div>
+    </div>
+    <div class="login-form">
+        <div class="form-container">
+            <h2>Zaloguj się</h2>
+            <form onsubmit="return handleLogin(event)">
+                <input type="email" name="email" placeholder="Adres email" required>
+                <input type="text" name="username" placeholder="Login użytkownika" required>
+                <input type="password" name="password" placeholder="Hasło" required>
+                <button type="submit">Zaloguj się</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const form = event.target;
+            const username = form.elements.username.value;
+            localStorage.setItem("username", username);
+            window.location.href = "main.html";
+        }
+    </script>
+</body>
+</html>

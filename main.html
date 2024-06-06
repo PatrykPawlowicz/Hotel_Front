@@ -7,6 +7,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .auth-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-container p {
+            margin-right: 10px;
+            color: #000;
+        }
+
+        .logout-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -15,18 +40,18 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="#">Strona główna</a></li>
+                <li><a href="main.html">Strona główna</a></li>
                 <li><a href="#">Pokoje</a></li>
                 <li><a href="#">Rezerwacja</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
         </div>
-        <div class="auth-buttons">
+        <div class="auth-buttons" id="auth-buttons">
             <div class="signup">
-                <a href="#">Rejestracja</a>
+                <a href="signup.html">Rejestracja</a>
             </div>
             <div class="login">
-                <a href="#">Logowanie</a>
+                <a href="login.html">Logowanie</a>
             </div>
         </div>
     </div>
@@ -34,7 +59,7 @@
         <div class="heading">
             <h1>Podróżuj razem z nami po świecie!</h1>
             <br>
-            <p>Życie jest zbyt krótkie by spędzić je w miejscu. Zapraszamy do przeżycia najpiękniejszych chwil spędzonych wraz z KWP Hotel! </p>
+            <p>Życie jest zbyt krótkie by spędzić je w miejscu. Zapraszamy do przeżycia najpiękniejszych chwil spędzonych wraz z KWP Hotel!</p>
             <br>
             <br>
             <a href="#">Wykonaj rezerwację</a>
@@ -54,5 +79,25 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const username = localStorage.getItem("username");
+            const authButtons = document.getElementById("auth-buttons");
+
+            if (username) {
+                authButtons.innerHTML = `
+                    <div class="auth-container">
+                        <p>Cześć, ${username}!</p>
+                        <button class="logout-btn" id="logout-btn">Wyloguj</button>
+                    </div>
+                `;
+
+                document.getElementById("logout-btn").addEventListener("click", function() {
+                    localStorage.removeItem("username");
+                    location.reload();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
