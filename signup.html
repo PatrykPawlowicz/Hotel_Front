@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="authScripts.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rejestracja - KWP Hotel</title>
@@ -82,12 +83,11 @@
         <div class="form-container">
             <h2>Utwórz konto użytkownika</h2>
             <form onsubmit="return handleSignup(event)">
-                <input type="text" name="firstname" placeholder="Imię" required>
-                <input type="text" name="lastname" placeholder="Nazwisko" required>
-                <input type="email" name="email" placeholder="Adres email" required>
-                <input type="username" name="username" placeholder="Login użytkownika" required>
-                <input type="password" name="password" placeholder="Hasło" required>
-                <button type="submit">Zarejestruj się</button>
+                <input type="text" id="firstname" name="firstname" placeholder="Imię" required>
+                <input type="text" id="lastname" name="lastname" placeholder="Nazwisko" required>
+                <input type="email" id="email" name="email" placeholder="Adres email" required pattern=".+@example\.com">
+                <input type="password" id="password" name="password" placeholder="Hasło" required>
+                <button type="submit" onclick="register()">Zarejestruj się</button>
             </form>
         </div>
     </div>

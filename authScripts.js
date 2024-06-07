@@ -16,4 +16,24 @@ function login(){
         }).catch((error) => console.error('Error:', error));
 };
 
-function register(){}
+function register(){
+    var email = document.getElementById('email').value;
+    var password= document.getElementById('password').value;
+    var firstname = document.getElementById('firstname').value;
+    var lastname= document.getElementById('lastname').value;
+
+    fetch('https://cloudhotelapi.azurewebsites.net/Auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                name: firstname,
+                surname: lastname
+            })
+        }).then(response=> console.log('Status Code:', response.status)).catch(error => {
+            console.error('Error:', error)
+        });
+}
+
