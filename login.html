@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="authScripts.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logowanie - KWP Hotel</title>
@@ -64,7 +65,7 @@
         <div class="menu">
             <ul>
                 <li><a href="main.html">Strona główna</a></li>
-                <li><a href="#">Pokoje</a></li>
+                <li><a href="pokoje.html">Pokoje</a></li>
                 <li><a href="#">Rezerwacja</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
@@ -81,22 +82,12 @@
     <div class="login-form">
         <div class="form-container">
             <h2>Zaloguj się</h2>
-            <form onsubmit="return handleLogin(event)">
-                <input type="email" name="email" placeholder="Adres email" required>
-                <input type="text" name="username" placeholder="Login użytkownika" required>
-                <input type="password" name="password" placeholder="Hasło" required>
-                <button type="submit">Zaloguj się</button>
+            <form>
+                <input type="email" id="email" name="email" placeholder="Adres email" required pattern=".+@example\.com">
+                <input type="password" id="password" name="password" placeholder="Hasło" required>
+                <button type="submit" onclick="login()">Zaloguj się</button>
             </form>
         </div>
     </div>
-    <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const form = event.target;
-            const username = form.elements.username.value;
-            localStorage.setItem("username", username);
-            window.location.href = "main.html";
-        }
-    </script>
 </body>
 </html>
