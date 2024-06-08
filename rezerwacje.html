@@ -43,7 +43,6 @@
             <ul>
                 <li><a href="main.html">Strona główna</a></li>
                 <li><a href="pokoje.html">Pokoje</a></li>
-                <li><a href="rezerwacje.html">Rezerwacja</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
         </div>
@@ -56,24 +55,28 @@
             </div>
         </div>
     </div>
-    <div>
-        <script>
-
+    <script>
+        var id_user = getCookie('id')
+        var token = getCookie('token')
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('https://cloudhotelapi.azurewebsites.net/rooms').then(response => response.json())
+            fetch('https://cloudhotelapi.azurewebsites.net/api/Reservation/1', {
+            method: 'GET',
+            headers: {
+                'Authorization': token }
+             }).then(response => response.json())
             .then(data => {
-                let counter = 0;
+            console.log(data);
+            let counter = 0;
              const tableBody = document.getElementById('table-body');
                 data.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                <td id="id_room-${counter}">${item.id_room}</td>
-                <td>${item.number}</td>
-                <td>${item.description}</td>
-                <td><button type="submit" onclick="openReservationPopup(${counter})">Zarezerwuj</button></td>
+                <td>${item[counter].id_reservation}</td>
+                <td>${item[counter].id_room}</td>
+                <td>${item[counter].start_date.slice(0, 10)}</td>
+                <td>${item[counter].end_date.slice(0, 10)}</td>
         `;
         tableBody.appendChild(row);
-        counter++;
       });
     }) 
     .catch(error => {
@@ -82,31 +85,18 @@
 });
 
 </script>
-    
-<div class="reservation-popup" id="reservationForm">
-    <button type="button" class="close-button" onclick="closeReservationPopup()">Close</button>
-    <form class="reservation-form-popup">
-      <h2>Login Form</h2>
-      <label><b>Choose starting date</b></label>
-      <input type="date" name="start_date" id="start_date" required>
-      <li></li>
-      <label><b>Choose ending date</b></label>
-      <input type="date" name="end_date" id="end_date" required>
-      
-    </form>
-    <li><button type="submit" onclick="createReservation()">Zarezerwuj</button></li>
-  </div>
   
 <div class="center-div">  
-<table class="room-table">
-    <thead>
-      <tr>
-        <th class="invisible"></th>
-        <th>Numer pokoju</th>
-        <th>Opis</th>
-      </tr>
-    </thead>
-    <tbody id="table-body">
-    </tbody>
-  </table>
-</div>
+    <table class="room-table">
+        <thead>
+          <tr>
+            <th>Numer rezerwacji</th>
+            <th>Numer pokoju</th>
+            <th>Data rozpoczecia</th>
+            <th>Data zakonczenia</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
+    </div>

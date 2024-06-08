@@ -11,8 +11,10 @@ function login(){
                 password: password
             })
         }).then(response=> response.json()).then(data=> {
-            const token = 'Bearer '+data.data;
+            const token = 'bearer '+data.data;
+            const id = data.id;
             document.cookie = `token=${token}; path=/; max-age=3600`; 
+            document.cookie = `id=${id}; path=/; max-age=3600`; 
         }).catch((error) => console.error('Error:', error));
 };
 

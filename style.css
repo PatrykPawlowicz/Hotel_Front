@@ -173,3 +173,61 @@ body {
 .contact-map {
     margin-top: 20px;
 }
+
+.center-div{
+    margin: auto;
+    width: 50%;
+}
+
+.room-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #70b0ff;
+    padding: 8px; 
+    border: 1px solid rgb(11, 3, 77); 
+  }
+  
+  td {
+    background-color: #bcd3f0;
+    text-align: center;
+    padding: 8px; 
+    border: 1px solid rgba(0, 0, 0, 0.699);
+  }
+
+  .reservation-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+
+  .reservation-form-popup {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+  }
+  
+
+  .close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    font-size: 10px;
+    margin-left: 10px;
+  }
+.clear {
+    visibility: none;
+  }
+
+.th.invisible {
+    display: none;
+}
